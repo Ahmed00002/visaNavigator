@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  body {
+    @apply font-poppins;
+  }
+  .theme-btnPrimary {
+    @apply bg-[#015cb5] text-white  border   transition-all duration-300;
+  }
+  .theme-btnSecondary {
+    @apply bg-transparent  border border-[#015cb5] text-[#015cb5] transition-all duration-300;
+  }
+
+  .links a.active {
+    @apply text-colorPrimary;
+  }
+
+  .links a {
+    position: relative;
+    overflow: hidden;
+    padding: 2px 10px;
+  }
+  .links a.active::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #015cb5;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .links a::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #015cb5;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 100%;
+    transition: ease-in-out;
+    transition-duration: 500ms;
+  }
+  .links a:hover::after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  .center {
+    @apply px-5 md:px-10 lg:px-12 2xl:px-28 max-w-[1440px] mx-auto;
+  }
+  .hero4 {
+    background: linear-gradient(90deg, #fdfdfdcf, #ffffff00),
+      url("./assets/hero4.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .paddingX {
+    @apply px-5 md:px-10 lg:px-12 2xl:px-28;
+  }
+}
