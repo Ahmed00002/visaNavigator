@@ -46,14 +46,24 @@ export const AddVisa = () => {
     };
     console.log(data.requiredDocuments);
 
-    // Simulating API call to save visa data
-    console.log("Submitted Visa Data:", data);
-
-    Swal.fire({
-      icon: "success",
-      title: "Visa Added",
-      text: "The visa has been successfully added.",
-    });
+    fetch("http://localhost:5000/visas/add", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((success) => {
+        if (success.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Visa Added",
+            text: "Your visa has been successfully added.",
+          });
+        }
+        console.log(success);
+      });
 
     // Reset form after submission
     // setVisaData({

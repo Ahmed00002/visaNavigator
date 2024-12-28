@@ -24,7 +24,7 @@ const ScrollNav = ({ menu }) => {
   return (
     <>
       <div
-        className={`fixed py-2 transition-all z-40 duration-700 bg-white w-full paddingX ${
+        className={`fixed py-2 transition-all z-40 duration-700 bg-white w-full paddingX shadow-md ${
           isScrolled ? "top-0 left-0 block" : "-top-20 left-0"
         }
       `}
