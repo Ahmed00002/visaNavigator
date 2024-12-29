@@ -11,29 +11,31 @@ const VisaCard = ({ visaData }) => {
     applicationMethod,
   } = visaData;
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img
-        src={countryImage}
-        alt={`${countryName} Image`}
-        className="w-full h-48 object-cover"
-      />
-      <div className="p-4 text-center">
-        <div className="text-left">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden  flex flex-col ">
+      <div className=" text-center grow ">
+        <img
+          src={countryImage}
+          alt={`${countryName} Image`}
+          className="w-full h-48 object-cover"
+        />
+        <div className="text-left  px-4 pt-3">
           <h3 className="text-xl font-semibold">{countryName}</h3>
           <p className="text-sm text-gray-500">Visa Type: {"not found"}</p>
           <p className="mt-2">
-            <strong>Processing Time:</strong> {processingTime}
+            <strong>Processing Time:</strong> {processingTime} Month
           </p>
           <p>
-            <strong>Fee:</strong> {fee}
+            <strong>Fee:</strong> ${fee}
           </p>
           <p>
-            <strong>Validity:</strong> {validity}
+            <strong>Validity:</strong> {validity} Year
           </p>
           <p>
             <strong>Application method:</strong> {applicationMethod}
           </p>
         </div>
+      </div>
+      <div className="bg-gray-100 text-center pb-4 m-[1px] rounded-b-lg">
         <button className="mt-4 inline-block text-white btn btn-sm bg-colorPrimary rounded-full theme-btnSecondary hover:theme-btnPrimary">
           See Details
         </button>

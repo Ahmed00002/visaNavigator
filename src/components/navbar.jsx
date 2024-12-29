@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className="flex gap-4 py-4 md:py-5 2xl:py-6 px-10">
+      <div className="flex gap-4 py-4 md:py-5 2xl:py-6 px-10 shadow-md">
         <div className=" border-r pr-10">
           <img src={logo} alt="" />
         </div>

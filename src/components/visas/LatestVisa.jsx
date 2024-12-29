@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import GradientShape from "../GradientShape";
 import VisaCard from "./VisaCard";
+import { Link } from "react-router-dom";
 
 const LatestVisa = () => {
   const [visaData, setVisaData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/visas")
+    fetch("http://localhost:5000/visas/latests")
       .then((res) => res.json())
       .then((visas) => setVisaData(visas));
   }, []);
@@ -27,12 +28,13 @@ const LatestVisa = () => {
         {visaData.map((visa, idx) => (
           <VisaCard key={idx} visaData={visa}></VisaCard>
         ))}
-        <a
+        <Link
+          to={"/allVisa"}
           href="/all-visas"
           className="col-span-full text-center text-blue-500 font-semibold hover:underline mt-6"
         >
           See all visas
-        </a>
+        </Link>
       </section>
     </div>
   );
