@@ -15,7 +15,7 @@ const AllVisa = () => {
   console.log(visaData);
   return (
     <>
-      <div className="center mt-8 min-h-screen ">
+      <div className="center mt-12 min-h-screen ">
         <h1 className="text-3xl md:text-4xl font-bold text-center">
           Seamless Visa Solutions, <br />
           Tailored for You

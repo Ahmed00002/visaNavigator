@@ -17,25 +17,27 @@ export const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/addVisa",
+        path: "/visas/add",
         element: <AddVisa />,
       },
       {
-        path: "/allVisa",
+        path: "/visas",
         element: <AllVisa />,
         loader: () => fetch("http://localhost:5000/visas"),
       },
       {
-        path: "/myVisa",
+        path: "/visas/:id",
+        element: <VisaDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/visas/${params.id}`),
+      },
+      {
+        path: "/user/visas",
         element: <MyAddedVisa />,
       },
       {
-        path: "/myApplication",
+        path: "/user/applications",
         element: <MyApplication />,
-      },
-      {
-        path: "/visaDetails",
-        element: <VisaDetails />,
       },
     ],
   },

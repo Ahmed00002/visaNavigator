@@ -8,16 +8,16 @@ const Navbar = () => {
   // private routs
   const privateRoutes = (
     <>
-      <NavLink to={"/myVisa"}>My Visa</NavLink>
-      <NavLink to={"/myApplication"}>My Application</NavLink>
-      <NavLink to={"/addVisa"}>Add Visa</NavLink>
+      <NavLink to={"/user/visas"}>My Visa</NavLink>
+      <NavLink to={"/user/applications"}>My Application</NavLink>
+      <NavLink to={"/visas/add"}>Add Visa</NavLink>
     </>
   );
   // public routs
   const publicRoutes = (
     <>
       <NavLink to={"/"}>Home</NavLink>
-      <NavLink to={"/allVisa"}>All Visa</NavLink>
+      <NavLink to={"/visas"}>All Visa</NavLink>
       {privateRoutes}
     </>
   );

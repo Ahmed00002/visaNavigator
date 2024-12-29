@@ -19,7 +19,6 @@ const ScrollNav = ({ menu }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [window.scrollY]);
-  console.log(isScrolled);
 
   return (
     <>

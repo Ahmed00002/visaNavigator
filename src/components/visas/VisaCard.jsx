@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
+
 const VisaCard = ({ visaData }) => {
   const {
+    _id,
     countryName,
     countryImage,
     processingTime,
-    requiredDocuments,
-    description,
-    ageRestriction,
+
     fee,
     validity,
     applicationMethod,
@@ -36,9 +37,11 @@ const VisaCard = ({ visaData }) => {
         </div>
       </div>
       <div className="bg-gray-100 text-center pb-4 m-[1px] rounded-b-lg">
-        <button className="mt-4 inline-block text-white btn btn-sm bg-colorPrimary rounded-full theme-btnSecondary hover:theme-btnPrimary">
-          See Details
-        </button>
+        <Link to={`/visas/${_id}`}>
+          <button className="mt-4 inline-block text-white btn btn-sm bg-colorPrimary rounded-full theme-btnSecondary hover:theme-btnPrimary">
+            See Details
+          </button>
+        </Link>
       </div>
     </div>
   );

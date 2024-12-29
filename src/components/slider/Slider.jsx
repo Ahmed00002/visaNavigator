@@ -18,12 +18,8 @@ const Slider = () => {
   useEffect(() => {
     fetch("sliderData.json")
       .then((res) => res.json())
-      .then(
-        (data) => setSliders(data)
-        // console.log(data);
-      );
+      .then((data) => setSliders(data));
   }, []);
-  console.log(sliders);
   return (
     <>
       <div className="center mt-24 ">

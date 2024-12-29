@@ -29,7 +29,7 @@ const LatestVisa = () => {
           <VisaCard key={idx} visaData={visa}></VisaCard>
         ))}
         <Link
-          to={"/allVisa"}
+          to={"/visas"}
           href="/all-visas"
           className="col-span-full text-center text-blue-500 font-semibold hover:underline mt-6"
         >
