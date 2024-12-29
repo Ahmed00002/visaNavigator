@@ -1,14 +1,14 @@
 import { Typewriter } from "react-simple-typewriter";
 const Hero = () => {
   return (
-    <div className="hero4 bg-center bg-contain bg-no-repeat min-h-screen flex flex-col justify-center items-start px-4 md:px-8 lg:px-10  ">
-      <div className="flex flex-col justify-center  gap-4 center  w-full h-screen">
+    <div className="hero4 bg-center bg-contain bg-no-repeat h-auto xl:min-h-screen flex flex-col justify-center items-start px-4 md:px-8 lg:px-10  py-20 xl:py-4">
+      <div className="flex flex-col justify-center  gap-4 center  w-full xl:h-screen">
         <div>
-          <button className="px-4 text-white bg-colorPrimary py-2 border-transparent rounded-full">
+          <button className="px-4 text-white bg-colorPrimary py-1 md:py-2 border-transparent rounded-full">
             SINCE 1987 COMPANY
           </button>
         </div>
-        <h1 className="text-6xl xl:text-7xl uppercase">
+        <h1 className="text-3xl md:text-6xl xl:text-7xl uppercase">
           Shocking Revelation <br />{" "}
           <span className="font-bold  text-colorPrimary ">
             <Typewriter

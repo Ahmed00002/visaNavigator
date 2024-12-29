@@ -47,8 +47,8 @@ const Slider = () => {
           className="  h-[400px]"
         >
           {sliders.map((slider, idx) => (
-            <SwiperSlide>
-              <SliderCard key={idx} props={{ slider, idx }}></SliderCard>
+            <SwiperSlide key={idx}>
+              <SliderCard props={{ slider, idx }}></SliderCard>
             </SwiperSlide>
           ))}
         </Swiper>
