@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { data } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../contexts/contexts";
 
 export const AddVisa = () => {
   // const [visaData, setVisaData] = useState({
@@ -15,6 +16,7 @@ export const AddVisa = () => {
   // applicationMethod: "",
   // });
   const [checkboxData, setCheckboxData] = useState([]);
+  const { user } = useContext(AuthContext);
   function handleChange(e) {
     const { type, value, name, checked } = e.target;
     if (checked) {
@@ -43,8 +45,9 @@ export const AddVisa = () => {
       fee: form.get("fee"),
       validity: form.get("validity"),
       applicationMethod: form.get("applicationMethod"),
+      email: user.email,
+      authorName: user.displayName,
     };
-    console.log(data.requiredDocuments);
 
     fetch("http://localhost:5000/visas/add", {
       method: "POST",
@@ -62,7 +65,6 @@ export const AddVisa = () => {
             text: "Your visa has been successfully added.",
           });
         }
-        console.log(success);
       });
 
     // Reset form after submission
@@ -72,7 +74,7 @@ export const AddVisa = () => {
     //   processingTime: "",
     //   requiredDocuments: [],
     //   description: "",
-    //   ageRestriction: "",
+    //   ageRestriction: "",S
     //   fee: "",
     //   validity: "",
     //   applicationMethod: "",

@@ -6,7 +6,6 @@ const VisaCard = ({ visaData }) => {
     countryName,
     countryImage,
     processingTime,
-
     fee,
     validity,
     applicationMethod,

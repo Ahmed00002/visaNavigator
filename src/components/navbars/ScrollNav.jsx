@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import logo from "../../assets/logo.png";
+import { AuthContext } from "../contexts/contexts";
 const ScrollNav = ({ menu }) => {
-  const { publicRoutes } = menu;
+  const { publicRoutes, userProfile, loginButton } = menu;
   const [isScrolled, setIsScrolled] = useState(false);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,11 +37,7 @@ const ScrollNav = ({ menu }) => {
           <div className="links grow flex items-center justify-center gap-4">
             {publicRoutes}
           </div>
-          <div>
-            <button className="btn btn-md 2xl:btn-lg rounded-full theme-btnSecondary hover:theme-btnPrimary">
-              Login/Signup
-            </button>
-          </div>
+          <div className="pl-4">{user ? userProfile : loginButton}</div>
         </div>
       </div>
     </>

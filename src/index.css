@@ -63,4 +63,13 @@
   .paddingX {
     @apply px-5 md:px-10 lg:px-12 2xl:px-28;
   }
+  /* hover effect for user profile */
+  .profile:hover .profileMenu {
+    display: block;
+    transition: all;
+    transition-duration: 500ms;
+    position: absolute;
+    top: 100%;
+    right: 0;
+  }
 }

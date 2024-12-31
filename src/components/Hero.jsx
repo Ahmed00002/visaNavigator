@@ -8,7 +8,7 @@ const Hero = () => {
             SINCE 1987 COMPANY
           </button>
         </div>
-        <h1 className="text-3xl md:text-6xl xl:text-7xl uppercase">
+        <h1 className="text-3xl md:text-6xl 2xl:text-8xl uppercase">
           Shocking Revelation <br />{" "}
           <span className="font-bold  text-colorPrimary ">
             <Typewriter
@@ -23,7 +23,7 @@ const Hero = () => {
           </span>
         </h1>
 
-        <p className="text-lg text-gray-700">
+        <p className="text-lg 2xl:text-2xl 2xl:font-medium text-gray-700">
           Your Trusted Partner for Hassle-Free Visa Assistance
         </p>
         <div className="space-x-4">

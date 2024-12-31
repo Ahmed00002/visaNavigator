@@ -1,16 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { FaPhone } from "react-icons/fa";
 import ScrollNav from "./navbars/ScrollNav";
+import { AuthContext } from "./contexts/contexts";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+
+  // signout
+  const handleSignout = () => {
+    logout()
+      .then((success) => {
+        Swal.fire({
+          title: "Success",
+          text: "Logout successful.",
+          icon: "success",
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Failed",
+          text: "Failed to logout. Try again!",
+        });
+      });
+  };
+
   // private routs
   const privateRoutes = (
     <>
       <NavLink to={"/user/visas"}>My Visa</NavLink>
       <NavLink to={"/user/applications"}>My Application</NavLink>
-      <NavLink to={"/visas/add"}>Add Visa</NavLink>
+      <NavLink to={"/visa/add"}>Add Visa</NavLink>
     </>
   );
   // public routs
@@ -20,6 +43,34 @@ const Navbar = () => {
       <NavLink to={"/visas"}>All Visa</NavLink>
       {privateRoutes}
     </>
+  );
+  // login button
+  const loginButton = (
+    <Link to={"/auth/login"}>
+      <button className="btn btn-md 2xl:btn-lg rounded-full theme-btnSecondary">
+        Login/Signup
+      </button>
+    </Link>
+  );
+
+  // userProfile
+  const userProfile = (
+    <div className="relative profile">
+      <img
+        className=" h-14 w-14 hover:border-gray-400 transition-all cursor-pointer object-cover rounded-full border-2 border-colorPrimary"
+        src={user?.photoURL}
+        alt={`profile pic of ${user?.displayName}`}
+      />
+      <div className=" profileMenu w-[200px] p-4 space-y-4 hidden border absolute top-full -right-52 bg-white z-50 rounded-lg transition-all duration-700">
+        <h1>{user?.displayName}</h1>
+        <button
+          onClick={handleSignout}
+          className="flex items-center justify-center btn btn-sm bg-red-400"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
   );
 
   return (
@@ -41,15 +92,11 @@ const Navbar = () => {
               <p className="font-bold text-lg">+8801800-00000</p>
             </div>
           </div>
-          <div className="pl-4">
-            <button className="btn btn-md 2xl:btn-lg rounded-full theme-btnSecondary">
-              Login/Signup
-            </button>
-          </div>
+          <div className="pl-4">{user ? userProfile : loginButton}</div>
         </div>
       </div>
 
-      <ScrollNav menu={{ publicRoutes }}></ScrollNav>
+      <ScrollNav menu={{ publicRoutes, loginButton, userProfile }}></ScrollNav>
     </nav>
   );
 };

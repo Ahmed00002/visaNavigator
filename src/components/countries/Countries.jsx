@@ -68,7 +68,7 @@ const Countries = () => {
           <GradientShape />
         </div>
       </section>
-      <section className="flex justify-center ic gap-4 center mt-8">
+      <section className="flex justify-center ic gap-4 center mt-8 mb-24">
         <Swiper
           slidesPerView={1}
           spaceBetween={5}

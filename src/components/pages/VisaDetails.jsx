@@ -12,9 +12,10 @@ const VisaDetails = () => {
     fee,
     validity,
     applicationMethod,
+    authorName,
   } = visaData;
   return (
-    <div className="mt-12 center">
+    <div className="my-12 center">
       <section className=" bg-gray-50 p-6 rounded-xl">
         <div className="flex flex-col md:flex-row gap-4 pb-3 border-b">
           <img className="w-[300px] h-[200px]" src={countryImage} alt="" />
@@ -23,7 +24,10 @@ const VisaDetails = () => {
               <h1 className="text-2xl font-medium text-gray-500">Visa For</h1>
               <h1 className="font-bold text-4xl mt-1 mb-2">{countryName}</h1>
               <p className="text-orange-500">
-                By: <span className="cursor-pointer">Ahmed Numan</span>
+                By:{" "}
+                <span className="cursor-pointer">
+                  {authorName ? authorName : "Undefined"}
+                </span>
               </p>
               <h1 className="text-green-500">
                 Visa Fee: <span className="text-lg font-bold  ">${fee}</span>
@@ -42,10 +46,10 @@ const VisaDetails = () => {
         {/* documents */}
         <div className="space-y-2 bg-red-50 p-2 mt-4 rounded-lg">
           <h1 className="text-xl font-medium">
-            Required Document <span className="text-red-500">*</span>
+            Required Documents <span className="text-red-500">*</span>
           </h1>
           {requiredDocuments.map((doc, idx) => (
-            <p className="text-gray-500">
+            <p key={idx} className="text-gray-500">
               {idx + 1} {doc}
             </p>
           ))}

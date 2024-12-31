@@ -32,7 +32,7 @@ const Features = () => {
   return (
     <section className="center">
       {/* section title */}
-      <div className="text-center center mt-24 text-sm">
+      <div className="text-center center mt-24 textarea-sm">
         <p className="uppercase text-gray-500">Countries You can visit</p>
         <h1 className="text-3xl md:text-4xl font-bold mt-2 mb-5">
           Few reasons to choose <br /> Our visa{" "}
