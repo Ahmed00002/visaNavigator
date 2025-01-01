@@ -47,6 +47,7 @@ export const AddVisa = () => {
       applicationMethod: form.get("applicationMethod"),
       email: user.email,
       authorName: user.displayName,
+      visaType: form.get("visaType"),
     };
 
     fetch("http://localhost:5000/visas/add", {
@@ -217,6 +218,21 @@ export const AddVisa = () => {
                 required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
+            </div>
+            {/* visa type */}
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Visa Type:
+              </label>
+              <select
+                name="visaType"
+                id="visaType"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+              >
+                <option value="Student visa">Student visa</option>
+                <option value="Tourist visa">Tourist visa</option>
+                <option value="Work permit">Work permit</option>
+              </select>
             </div>
             <button
               type="submit"

@@ -9,6 +9,7 @@ const VisaCard = ({ visaData }) => {
     fee,
     validity,
     applicationMethod,
+    visaType,
   } = visaData;
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden  flex flex-col ">
@@ -20,7 +21,7 @@ const VisaCard = ({ visaData }) => {
         />
         <div className="text-left  px-4 pt-3">
           <h3 className="text-xl font-semibold">{countryName}</h3>
-          <p className="text-sm text-gray-500">Visa Type: {"not found"}</p>
+          <p className="text-sm text-gray-500">Visa Type: {visaType}</p>
           <p className="mt-2">
             <strong>Processing Time:</strong> {processingTime} Month
           </p>

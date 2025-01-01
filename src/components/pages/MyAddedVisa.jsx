@@ -28,11 +28,12 @@ const MyAddedVisa = () => {
   };
   return (
     <>
+      <h1 className="text-2xl font-bold my-4 center">My Visas</h1>
       <section
-        className={`center ${
+        className={`center mb-12 ${
           userVisas.length !== 0
             ? " grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4"
-            : "flex flex-col items-center min-h-screen"
+            : "flex flex-col items-center min-h-screen "
         } `}
       >
         {userVisas.length === 0 && (

@@ -14,7 +14,7 @@ const VisaCard = ({ props }) => {
   } = visa;
 
   return (
-    <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden my-12">
+    <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden">
       <img
         className="w-full h-48 object-cover"
         src={countryImage}
