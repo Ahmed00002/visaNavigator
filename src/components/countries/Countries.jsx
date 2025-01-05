@@ -68,7 +68,7 @@ const Countries = () => {
           <GradientShape />
         </div>
       </section>
-      <section className="flex justify-center ic gap-4 center mt-8 mb-24">
+      <section className="flex justify-center ic gap-4 center mt-8 pb-24">
         <Swiper
           slidesPerView={1}
           spaceBetween={5}
@@ -99,7 +99,7 @@ const Countries = () => {
                     src={country.flag}
                     alt={`flag of ${country.name}}`}
                   />
-                  <h1 className="px-4 py-1 bg-gray-100 rounded-lg">
+                  <h1 className="px-4 py-1 bg-gray-100 text-black rounded-lg">
                     {country.name}
                   </h1>
                 </div>

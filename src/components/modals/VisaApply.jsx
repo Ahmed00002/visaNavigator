@@ -5,8 +5,7 @@ import { MdAttachMoney } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 
 const VisaApply = ({ data }) => {
-  const { setShowApplyModal, fee, handleApply, handleApplyModal } = data;
-  console.log(fee);
+  const { fee, handleApply, handleApplyModal } = data;
   const date = new Date();
   const { user } = useContext(AuthContext);
 

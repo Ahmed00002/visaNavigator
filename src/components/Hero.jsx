@@ -1,7 +1,14 @@
+import { useContext } from "react";
 import { Typewriter } from "react-simple-typewriter";
+import { AuthContext } from "./contexts/contexts";
 const Hero = () => {
+  const { darkMode } = useContext(AuthContext);
   return (
-    <div className="hero4 bg-center bg-contain bg-no-repeat h-auto xl:min-h-screen flex flex-col justify-center items-start px-4 md:px-8 lg:px-10  py-20 xl:py-4">
+    <div
+      className={`hero4 bg-center bg-contain bg-no-repeat h-auto xl:min-h-screen flex flex-col justify-center items-start px-4 md:px-8 lg:px-10  py-20 xl:py-4 ${
+        darkMode && "darkMode"
+      }`}
+    >
       <div className="flex flex-col justify-center  gap-4 center  w-full xl:h-screen">
         <div>
           <button className="px-4 text-white bg-colorPrimary py-1 md:py-2 border-transparent rounded-full">

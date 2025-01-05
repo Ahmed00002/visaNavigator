@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const MyApplication = () => {
   const [visaApplications, setVisaApplications] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -13,6 +14,14 @@ const MyApplication = () => {
       .then((res) => res.json())
       .then((data) => setVisaApplications(data));
   }, []);
+
+  const handleSearch = (e) => {
+    const country = e.target.value;
+    const found = visaApplications.filter((visa) =>
+      visa.countryName.toLowerCase().includes(country.toLowerCase())
+    );
+    setSearchResult(found);
+  };
 
   const handleCancel = (id) => {
     // Database and UI logic to remove visa application
@@ -49,10 +58,22 @@ const MyApplication = () => {
 
   return (
     <section className="center mb-12 flex flex-col items-center min-h-screen">
-      {/* page heading */}
-      <h1 className="text-2xl text-left w-full font-bold my-4">
-        My Visa Applications
-      </h1>
+      <div className="flex justify-between w-full items-center">
+        {/* page heading */}
+        <h1 className="text-2xl text-left w-full font-bold my-4">
+          My Visa Applications
+        </h1>
+        <div className={`${visaApplications.length === 0 && "hidden"}`}>
+          <input
+            className="px-4 py-2 outline-none border rounded-full"
+            type="search"
+            name="search"
+            id="search"
+            placeholder="Search country"
+            onChange={handleSearch}
+          />
+        </div>
+      </div>
 
       {/* default message if no applications found */}
       {visaApplications.length === 0 && (
@@ -69,10 +90,14 @@ const MyApplication = () => {
         </>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
-        {visaApplications.map((visa) => (
-          <ApplicationCard key={visa._id} props={{ visa, handleCancel }} />
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {searchResult.length === 0
+          ? visaApplications.map((visa) => (
+              <ApplicationCard key={visa._id} props={{ visa, handleCancel }} />
+            ))
+          : searchResult.map((visa) => (
+              <ApplicationCard key={visa._id} props={{ visa, handleCancel }} />
+            ))}
       </div>
     </section>
   );

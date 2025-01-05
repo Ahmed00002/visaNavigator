@@ -9,6 +9,7 @@ import VisaDetails from "../pages/VisaDetails";
 import Login from "../authentication/Login";
 import Signup from "../authentication/Signup";
 import PrivateRouts from "../Private/PrivateRouts";
+import Forget from "../authentication/Forget";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path: "/auth/login",
         element: <Login />,
+      },
+      {
+        path: "/auth/forget",
+        element: <Forget />,
       },
       {
         path: "/auth/signup",

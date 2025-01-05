@@ -1,41 +1,40 @@
 import Lottie from "lottie-react";
-import animation from "../../assets/lotties/Animation - 1735543911558.json";
+import animation from "../../assets/lotties/forgotpass.json";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/contexts";
 
-const Login = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { signinWithEmailAndPass } = useContext(AuthContext);
-  const handleLogin = (e) => {
+const Forget = () => {
+  //   const location = useLocation();
+  //   const navigate = useNavigate();
+  const { resetPass } = useContext(AuthContext);
+  const handleReset = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
-
     const email = form.get("email");
-    const pass = form.get("password");
-    console.log({ email, pass });
-    signinWithEmailAndPass(email, pass)
-      .then((s) => {
-        navigate(location.state ? location.state : "/");
+
+    resetPass(email)
+      .then((res) => {
+        console.log(res);
+        // navigate(location.state ? location.state : "/");
       })
-      .catch((e) => console.log(e.message));
+      .catch((err) => console.log(err.message));
   };
   return (
     <>
       <section className=" center md:min-h-screen my-12">
         {/* container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center p-6 border rounded-xl shadow-md">
+        <div className="grid md:grid-cols-2 justify-center items-center p-6 border rounded-xl shadow-md">
           {/* form container */}
-          <div className="md:w-9/12 mx-auto order-2">
+          <div className="md:w-9/12 mx-auto">
             <h1 className="text-4xl font-bold text-colorPrimary text-center">
-              Login
+              Reset Password
             </h1>
             <p className="text-center mt-2 text-gray-400">
-              Welcome, enter credentials fro login
+              Enter email to reset password!
             </p>
-            {/* login form */}
-            <form onSubmit={handleLogin}>
+            {/* reset form */}
+            <form onSubmit={handleReset}>
               <div className="mt-8 space-y-4">
                 {/* email */}
                 <div>
@@ -51,42 +50,22 @@ const Login = () => {
                     />
                   </label>
                 </div>
-                {/* password */}
-                <div>
-                  <label className="text-xs pl-1" htmlFor="email">
-                    Password <br />
-                    <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      placeholder="******"
-                      className="border-b border-b-gray-400 px-1 mt-1 pb-1 text-base outline-none w-full"
-                      required
-                    />
-                  </label>
-                </div>
-                <div>
-                  <Link to={"/auth/forget"}>
-                    <p className="text-xs text-colorPrimary cursor-pointer hover:underline">
-                      forgot password?
-                    </p>
-                  </Link>
-                </div>
+
                 {/* submit */}
                 <div>
                   <input
                     className="theme-btnPrimary px-4  py-2 rounded-full hover:bg-blue-700 btn btn-block"
                     type="submit"
-                    value="Login"
+                    value="Reset Password"
                   />
                 </div>
               </div>
               <div>
                 <p className="text-sm mt-4 text-center">
-                  New at Immigro?{" "}
-                  <Link to={"/auth/signup"}>
+                  Back to login?{" "}
+                  <Link to={"/auth/login"}>
                     <span className="font-bold text-colorPrimary cursor-pointer">
-                      Signup
+                      Login
                     </span>
                   </Link>
                 </p>
@@ -94,7 +73,7 @@ const Login = () => {
             </form>
           </div>
           {/* animation container */}
-          <div className="order-1 hidden md:block">
+          <div className="hidden md:block">
             <Lottie className="h-[400px]" animationData={animation}></Lottie>
           </div>
         </div>
@@ -103,4 +82,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Forget;

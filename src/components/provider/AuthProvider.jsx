@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -10,6 +11,11 @@ import auth from "../firebase/firebase_init";
 import { useEffect, useState } from "react";
 
 const AuthProvider = (props) => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const handleMode = () => {
+    setDarkMode(!darkMode);
+  };
   const { children } = props || {};
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -27,6 +33,11 @@ const AuthProvider = (props) => {
 
   const signinWithEmailAndPass = (email, pass) => {
     return signInWithEmailAndPassword(auth, email, pass);
+  };
+
+  // reset pass
+  const resetPass = (email) => {
+    return sendPasswordResetEmail(auth, email);
   };
 
   // logout user from account
@@ -57,9 +68,12 @@ const AuthProvider = (props) => {
             signupWithEmailAndPass,
             signinWithEmailAndPass,
             logout,
+            resetPass,
             updateUserProfile,
             user,
             loading,
+            handleMode,
+            darkMode,
           }}
         >
           {children}

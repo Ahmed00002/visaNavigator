@@ -1,9 +1,20 @@
+import { useContext } from "react";
 import logo from "../assets/logo.png";
+import { AuthContext } from "./contexts/contexts";
 const Footer = () => {
+  const { darkMode } = useContext(AuthContext);
   return (
     <>
-      <div className="bg-base-200">
-        <div className="footer  text-base-content p-10 center">
+      <div
+        className={`bg-base-200 ${
+          darkMode && "bg-gray-900 text-white border-t border-gray-800"
+        }`}
+      >
+        <div
+          className={`footer  text-base-content p-10 center ${
+            darkMode && "text-white"
+          }`}
+        >
           <aside>
             <img src={logo} alt="" />
             <p>

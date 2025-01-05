@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 
 const VisaCard = ({ props }) => {
-  const { visa, onDelete, onUpdate } = props;
+  const { visa, onDelete, onUpdate, handleUpdateModal } = props;
   const {
     _id,
     countryName,
@@ -41,7 +41,7 @@ const VisaCard = ({ props }) => {
         </p>
         <div className="flex justify-between mt-4">
           <button
-            onClick={onUpdate}
+            onClick={() => handleUpdateModal(_id)}
             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
           >
             Update

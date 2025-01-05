@@ -54,7 +54,6 @@ const VisaDetails = () => {
             icon: "success",
           });
         }
-        console.log(success);
       });
   };
 

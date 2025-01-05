@@ -7,13 +7,16 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Autoplay, Pagination } from "swiper/modules";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SliderCard from "./SliderCard";
 import GradientShape from "../GradientShape";
+import { AuthContext } from "../contexts/contexts";
+import "../../index.css";
 
 // import "./styles.css";
 
 const Slider = () => {
+  const { darkMode } = useContext(AuthContext);
   const [sliders, setSliders] = useState([]);
   useEffect(() => {
     fetch("sliderData.json")
@@ -22,7 +25,7 @@ const Slider = () => {
   }, []);
   return (
     <>
-      <div className="center mt-24 ">
+      <div className={`center mt-24 ${darkMode && "bg-gray-900 text-white"}`}>
         <div className="center text-center space-y-4 mb-8">
           <p></p>
           <h1 className="text-4xl font-bold">Explore, Apply, Achieve</h1>

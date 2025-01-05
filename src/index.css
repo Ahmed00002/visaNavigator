@@ -72,4 +72,9 @@
     top: 100%;
     right: 0;
   }
+
+  .dark {
+    background-color: black;
+    color: white;
+  }
 }

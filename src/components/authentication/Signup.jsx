@@ -15,22 +15,21 @@ const Signup = () => {
     const pass = form.get("password");
     const photoUrl = form.get("photoUrl");
     const name = form.get("name");
-    console.log({ name, photoUrl, email, pass });
     signupWithEmailAndPass(email, pass)
       .then((userData) => {
-        navigate("/");
+        navigate(location.state ? location.state : "/");
+
         updateUserProfile(name, photoUrl);
-        console.log(userData.user);
       })
       .catch((error) => console.log(error));
   };
   return (
     <>
-      <section className=" center min-h-screen mt-12">
+      <section className=" center md:min-h-screen my-12">
         {/* container */}
-        <div className="grid grid-cols-2 justify-center items-center p-6 border rounded-xl shadow-md">
+        <div className="grid md:grid-cols-2 justify-center items-center p-6 border rounded-xl shadow-md">
           {/* form container */}
-          <div className="w-9/12 mx-auto">
+          <div className="md:w-9/12 mx-auto">
             <h1 className="text-4xl font-bold text-colorPrimary text-center">
               Sign Up
             </h1>
@@ -111,7 +110,7 @@ const Signup = () => {
                   Already have account?{" "}
                   <Link to={"/auth/login"}>
                     <span className="font-bold text-colorPrimary cursor-pointer">
-                      signup
+                      Login
                     </span>
                   </Link>
                 </p>
@@ -119,7 +118,7 @@ const Signup = () => {
             </form>
           </div>
           {/* animation container */}
-          <div>
+          <div className="hidden md:block">
             <Lottie className="h-[400px]" animationData={animation}></Lottie>
           </div>
         </div>
