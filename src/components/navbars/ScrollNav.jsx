@@ -25,9 +25,9 @@ const ScrollNav = ({ menu }) => {
   return (
     <>
       <div
-        className={`hidden lg:block fixed py-2 transition-all z-40 duration-700 bg-white w-full paddingX shadow-md ${
+        className={`hidden lg:block fixed py-2 transition-all z-40 duration-700 w-full paddingX shadow-md ${
           isScrolled ? "top-0 left-0 block" : "-top-20 left-0"
-        } ${darkMode && "bg-gray-900 text-white"}
+        } ${darkMode ? "bg-gray-900 text-white" : "bg-white"}
       `}
       >
         <div className={`flex items-center justify-center w-full  `}>

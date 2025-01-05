@@ -1,12 +1,17 @@
 import Lottie from "lottie-react";
 import animation from "../../assets/lotties/signup.json";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/contexts";
+import { FaGooglePlusG } from "react-icons/fa";
 
 const Signup = () => {
+  const [errorText, setErrorText] = useState(null);
+  const regex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+
   const navigate = useNavigate();
-  const { signupWithEmailAndPass, updateUserProfile } = useContext(AuthContext);
+  const { signupWithEmailAndPass, updateUserProfile, googleLogin } =
+    useContext(AuthContext);
   const handleSignup = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -15,13 +20,30 @@ const Signup = () => {
     const pass = form.get("password");
     const photoUrl = form.get("photoUrl");
     const name = form.get("name");
-    signupWithEmailAndPass(email, pass)
-      .then((userData) => {
-        navigate(location.state ? location.state : "/");
+    const isValidPassword = regex.test(pass);
+    if (isValidPassword) {
+      signupWithEmailAndPass(email, pass)
+        .then((userData) => {
+          navigate(location.state ? location.state : "/");
 
-        updateUserProfile(name, photoUrl);
+          updateUserProfile(name, photoUrl);
+        })
+        .catch((error) => setErrorText(error.message));
+    } else {
+      setErrorText(
+        "Password must be at least 6 characters long, at least one uppercase letter and one lowercase latter"
+      );
+    }
+  };
+
+  // google login
+  const handleGoogleSignup = () => {
+    googleLogin()
+      .then((user) => {
+        navigate(location.state ? location.state : "/");
+        toast.success("Logged in successful");
       })
-      .catch((error) => console.log(error));
+      .catch((e) => toast.error("Something went wrong. Try again"));
   };
   return (
     <>
@@ -92,9 +114,11 @@ const Signup = () => {
                       placeholder="******"
                       className="border-b border-b-gray-400 px-1 mt-1 pb-1 text-base outline-none w-full"
                       required
+                      onChange={() => setErrorText(null)}
                     />
                   </label>
                 </div>
+                <p className="text-xs text-red-600">{errorText}</p>
 
                 {/* submit */}
                 <div>
@@ -116,6 +140,14 @@ const Signup = () => {
                 </p>
               </div>
             </form>
+            {/* google login */}
+            <div
+              onClick={handleGoogleSignup}
+              className="flex gap-2 justify-center items-center mt-4 px-4 py-2 rounded-full border text-4xl text-colorPrimary btn"
+            >
+              <FaGooglePlusG />
+              <h2 className="text-base">Signup with google</h2>
+            </div>
           </div>
           {/* animation container */}
           <div className="hidden md:block">

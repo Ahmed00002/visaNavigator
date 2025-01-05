@@ -1,13 +1,15 @@
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
 import { AuthContext } from "../contexts/contexts";
-import auth from "../firebase/firebase_init";
+import auth from "../firebase/Firebase.config";
 import { useEffect, useState } from "react";
 
 const AuthProvider = (props) => {
@@ -33,6 +35,12 @@ const AuthProvider = (props) => {
 
   const signinWithEmailAndPass = (email, pass) => {
     return signInWithEmailAndPassword(auth, email, pass);
+  };
+
+  // google login
+  const googleLogin = () => {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
   };
 
   // reset pass
@@ -70,6 +78,7 @@ const AuthProvider = (props) => {
             logout,
             resetPass,
             updateUserProfile,
+            googleLogin,
             user,
             loading,
             handleMode,

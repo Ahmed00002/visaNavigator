@@ -74,7 +74,7 @@ const Navbar = () => {
         src={user?.photoURL}
         alt={`profile pic of ${user?.displayName}`}
       />
-      <div className=" profileMenu w-[200px] p-4 space-y-4 hidden border absolute top-full -right-52 bg-white z-50 rounded-lg transition-all duration-700">
+      <div className=" profileMenu text-black w-[200px] p-4 space-y-4 hidden border absolute top-full -right-52 bg-white z-50 rounded-lg transition-all duration-700">
         <h1>{user?.displayName}</h1>
         <button
           onClick={handleSignout}

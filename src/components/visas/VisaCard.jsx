@@ -13,7 +13,7 @@ const VisaCard = ({ visaData }) => {
   } = visaData;
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden  flex flex-col ">
-      <div className=" text-center grow ">
+      <div className=" text-center grow text-black w-full ">
         <img
           src={countryImage}
           alt={`${countryName} Image`}

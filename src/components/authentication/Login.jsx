@@ -3,11 +3,15 @@ import animation from "../../assets/lotties/Animation - 1735543911558.json";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/contexts";
+import { FaGooglePlusG } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { signinWithEmailAndPass } = useContext(AuthContext);
+  const { signinWithEmailAndPass, googleLogin } = useContext(AuthContext);
+
+  // email pass login
   const handleLogin = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -18,8 +22,21 @@ const Login = () => {
     signinWithEmailAndPass(email, pass)
       .then((s) => {
         navigate(location.state ? location.state : "/");
+        toast.error("Something went wrong. Try again");
       })
-      .catch((e) => console.log(e.message));
+      .catch((e) => {
+        toast.error("Something went wrong. Try again");
+      });
+  };
+
+  // google login
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((user) => {
+        navigate(location.state ? location.state : "/");
+        toast.success("Logged in successful");
+      })
+      .catch((e) => toast.error("Something went wrong. Try again"));
   };
   return (
     <>
@@ -92,6 +109,14 @@ const Login = () => {
                 </p>
               </div>
             </form>
+            {/* google login */}
+            <div
+              onClick={handleGoogleLogin}
+              className="flex gap-2 justify-center items-center mt-4 px-4 py-2 rounded-full border text-4xl text-colorPrimary btn"
+            >
+              <FaGooglePlusG />
+              <h2 className="text-base">Signin with google</h2>
+            </div>
           </div>
           {/* animation container */}
           <div className="order-1 hidden md:block">
