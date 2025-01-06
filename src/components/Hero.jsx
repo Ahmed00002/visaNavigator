@@ -9,7 +9,7 @@ const Hero = () => {
         darkMode && "darkMode"
       }`}
     >
-      <div className="flex flex-col justify-center  gap-4 center  w-full xl:h-screen">
+      <div className="flex flex-col justify-center  gap-4 center  w-full xl:h-screen  text-white">
         <div>
           <button className="px-4 text-white bg-colorPrimary py-1 md:py-2 border-transparent rounded-full">
             SINCE 1987 COMPANY
@@ -17,7 +17,7 @@ const Hero = () => {
         </div>
         <h1 className="text-3xl md:text-6xl 2xl:text-8xl uppercase">
           Shocking Revelation <br />{" "}
-          <span className="font-bold  text-colorPrimary ">
+          <span className="font-bold  text-orange-500 ">
             <Typewriter
               words={["Visa Services", "Visa Consultant", "Online Application"]}
               loop={false}
@@ -30,7 +30,7 @@ const Hero = () => {
           </span>
         </h1>
 
-        <p className="text-lg 2xl:text-2xl 2xl:font-medium text-gray-700">
+        <p className="text-lg 2xl:text-2xl 2xl:font-medium text-gray-100">
           Your Trusted Partner for Hassle-Free Visa Assistance
         </p>
         <div className="space-x-4">

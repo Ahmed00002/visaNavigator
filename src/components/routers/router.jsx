@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
       {
         path: "/visas",
         element: <AllVisa />,
-        loader: () => fetch("http://localhost:5000/visas"),
+        loader: () => fetch("https://immigro.vercel.app/visas"),
       },
       {
         path: "/visas/:id",
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
           </PrivateRouts>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/visas/${params.id}`),
+          fetch(`https://immigro.vercel.app/visas/${params.id}`),
       },
       {
         path: "/user/visas",

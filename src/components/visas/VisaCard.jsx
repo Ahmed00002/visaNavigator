@@ -34,13 +34,13 @@ const VisaCard = ({ visaData }) => {
           <h3 className="text-xl font-semibold">{countryName}</h3>
           <p className="text-sm text-gray-500">Visa Type: {visaType}</p>
           <p className="mt-2">
-            <strong>Processing Time:</strong> {processingTime} Month
+            <strong>Processing Time:</strong> {processingTime}
           </p>
           <p>
             <strong>Fee:</strong> ${fee}
           </p>
           <p>
-            <strong>Validity:</strong> {validity} Year
+            <strong>Validity:</strong> {validity}
           </p>
           <p>
             <strong>Application method:</strong> {applicationMethod}

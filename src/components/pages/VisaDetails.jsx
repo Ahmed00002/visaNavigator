@@ -35,7 +35,7 @@ const VisaDetails = () => {
       fee: fee,
     };
 
-    fetch("http://localhost:5000/users/application", {
+    fetch("https://immigro.vercel.app/users/application", {
       method: "POST",
       headers: {
         "content-type": "application/json",

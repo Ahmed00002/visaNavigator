@@ -10,7 +10,7 @@ const MyApplication = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/applications/${user.email}`)
+    fetch(`https://immigro.vercel.app/users/applications/${user.email}`)
       .then((res) => res.json())
       .then((data) => setVisaApplications(data));
   }, []);
@@ -35,7 +35,7 @@ const MyApplication = () => {
       confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/applications/cancel/${id}`, {
+        fetch(`https://immigro.vercel.app/users/applications/cancel/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -58,14 +58,14 @@ const MyApplication = () => {
 
   return (
     <section className="center mb-12 flex flex-col items-center min-h-screen">
-      <div className="flex justify-between w-full items-center">
+      <div className="flex  justify-between w-full items-center">
         {/* page heading */}
-        <h1 className="text-2xl text-left w-full font-bold my-4">
+        <h1 className="text-xl md:text-2xl text-left w-full font-bold my-4">
           My Visa Applications
         </h1>
         <div className={`${visaApplications.length === 0 && "hidden"}`}>
           <input
-            className="px-4 py-2 outline-none border rounded-full"
+            className="p-2 w-full md:w-auto  md:py-2 md:px-4 outline-none border rounded-full"
             type="search"
             name="search"
             id="search"

@@ -12,7 +12,7 @@ const MyAddedVisa = () => {
   const [myVisa, setMyVisa] = useState([]);
 
   const handleUpdateModal = (id) => {
-    fetch(`http://localhost:5000/visas/${id}`)
+    fetch(`https://immigro.vercel.app/visas/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setMyVisa(data);
@@ -26,7 +26,7 @@ const MyAddedVisa = () => {
 
   // handle visa update
   const updateVisa = (id, updatedData) => {
-    fetch(`http://localhost:5000/users/visas/${id}`, {
+    fetch(`https://immigro.vercel.app/users/visas/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -57,7 +57,7 @@ const MyAddedVisa = () => {
 
   // fetch all user visa
   useEffect(() => {
-    fetch(`http://localhost:5000/users/visas/${user.email}`)
+    fetch(`https://immigro.vercel.app/users/visas/${user.email}`)
       .then((res) => res.json())
       .then((visas) => setUserVisas(visas));
   }, [updateVisa]);
@@ -73,7 +73,7 @@ const MyAddedVisa = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/visas/${_id}`, {
+        fetch(`https://immigro.vercel.app/users/visas/${_id}`, {
           method: "DELETE",
         }).then((res) => {
           Swal.fire({

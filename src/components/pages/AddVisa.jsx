@@ -1,20 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { data } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../contexts/contexts";
 
 export const AddVisa = () => {
-  // const [visaData, setVisaData] = useState({
-  // countryName: "",
-  // countryImage: "",
-  // processingTime: "",
-  // requiredDocuments: [],
-  // description: "",
-  // ageRestriction: "",
-  // fee: "",
-  // validity: "",
-  // applicationMethod: "",
-  // });
+  const formRef = useRef();
   const [checkboxData, setCheckboxData] = useState([]);
   const { user } = useContext(AuthContext);
   function handleChange(e) {
@@ -35,6 +25,7 @@ export const AddVisa = () => {
     e.preventDefault();
 
     const form = new FormData(e.target);
+
     const data = {
       countryName: form.get("countryName"),
       countryImage: form.get("countryImage"),
@@ -50,7 +41,7 @@ export const AddVisa = () => {
       visaType: form.get("visaType"),
     };
 
-    fetch("http://localhost:5000/visas/add", {
+    fetch("https://immigro.vercel.app/visas/add", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -65,27 +56,16 @@ export const AddVisa = () => {
             title: "Visa Added",
             text: "Your visa has been successfully added.",
           });
+          formRef.current.reset();
         }
       });
-
-    // Reset form after submission
-    // setVisaData({
-    //   countryName: "",
-    //   countryImage: "",
-    //   processingTime: "",
-    //   requiredDocuments: [],
-    //   description: "",
-    //   ageRestriction: "",S
-    //   fee: "",
-    //   validity: "",
-    //   applicationMethod: "",
-    // });
   };
   return (
     <>
       <div className="bg-gray-100  flex items-center justify-around py-10">
         <div className="flex flex-col items-center justify-start h-full w-full">
           <form
+            ref={formRef}
             onSubmit={handleSubmit}
             className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-md"
           >

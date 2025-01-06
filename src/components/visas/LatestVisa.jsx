@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const LatestVisa = () => {
   const [visaData, setVisaData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/visas/latests")
+    fetch("https://immigro.vercel.app/visas/latests")
       .then((res) => res.json())
       .then((visas) => setVisaData(visas));
   }, []);

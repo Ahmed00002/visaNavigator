@@ -54,7 +54,7 @@
     @apply px-5 md:px-10 lg:px-12 2xl:px-28 max-w-[1440px] mx-auto;
   }
   .hero4 {
-    background: linear-gradient(90deg, #fdfdfdcf, #ffffff00),
+    background: linear-gradient(90deg, #18115b88, #ffffff00),
       url("./assets/hero4.jpg");
     background-position: center;
     background-size: cover;
