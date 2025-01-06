@@ -8,6 +8,7 @@ const AllVisa = () => {
   const [loading, setLoading] = useState(true);
   const allVisas = useLoaderData();
   const [visaData, setVisaData] = useState([]);
+
   useEffect(() => {
     if (allVisas.length !== 0) {
       setLoading(false);

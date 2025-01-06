@@ -10,11 +10,13 @@ import Login from "../authentication/Login";
 import Signup from "../authentication/Signup";
 import PrivateRouts from "../Private/PrivateRouts";
 import Forget from "../authentication/Forget";
+import NotFound from "../Notfound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",

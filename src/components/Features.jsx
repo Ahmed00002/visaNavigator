@@ -1,5 +1,4 @@
 import { IoLogoWechat } from "react-icons/io5";
-import FeaturesCard from "./FeaturesCard";
 import GradientShape from "./GradientShape";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
@@ -90,7 +89,7 @@ const Features = () => {
         <h1 className="w-full text-center text-white uppercase">
           Top rated by customers & immigration firms with 100% success rate
         </h1>
-        <button className="py-2 w-[200px] rounded-full bg-white border-none">
+        <button className="py-2 w-[200px] rounded-full bg-white text-black border-none">
           Discover More
         </button>
       </div>
